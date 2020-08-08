@@ -1,26 +1,13 @@
--------------------------------------------------------------------------------
---
--- Title       : lab8task1
--- Design      : lab8
--- Author      : jasontan5126@yahoo.com
--- Company     : HP Inc.
---
--------------------------------------------------------------------------------
---
--- File        : c:\My_Designs\lab8\lab8\src\lab8task1.vhd
--- Generated   : Sat Apr 11 16:45:25 2020
--- From        : interface description file
--- By          : Itf2Vhdl ver. 1.22
---
--------------------------------------------------------------------------------
---
--- Description : 
---
--------------------------------------------------------------------------------
-
---{{ Section below this comment is automatically maintained
---   and may be overwritten
---{entity {lab8task1} architecture {lab8task1}}		  
+ -- Entity Name : send_pos_edge_det
+ -- Architecture: lab9task3structural
+ -- Description :  used to detect the positive edge of the send and to generate a narrow pulse that will be used by the
+ -- spi_tx_shifter to determine when it should start to send the byte of input data to the output.
+ -- Laboratory : #9
+ -- Design Task 3
+ -- Section : 03
+ -- Date Performed : 9 May 2020
+ -- Version/Rev : 1.0a
+ -- Authored by : Jason Tan and Zach Doctor	  
 	
 library ieee;
 use ieee.std_logic_1164.all;
