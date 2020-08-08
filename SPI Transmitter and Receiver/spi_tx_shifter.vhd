@@ -12,6 +12,7 @@
  -- Date Performed : 1 May 2020
  -- Version/Rev : 1.0a
  -- Authored by : Jason Tan and Zach Doctor
+ -- NOTE: This was also used when implementing for lab 8
 
 library IEEE;
 use IEEE.std_logic_1164.all; 
@@ -67,54 +68,54 @@ outputs: process (present_state, cpol, cpha, dord)
 		
 		case present_state is
 			when idle =>   
-			sck <= cpol;
-			txd <= '1';	  --serial output data is initially 0	 
+				sck <= cpol;
+				txd <= '1';	  --serial output data is initially 0	 
 			if cpol = '0' then
 				sck <= '0';     --cpol which will affect the sck initial value of waveform	  
 		end if;
-		 if cpol = '1' then
-				sck <= '1';
+		 	if cpol = '1' then
+			sck <= '1';
 		end if;	  	
-		spi_rxen <= '0';
+			spi_rxen <= '0';
 
-		ss_bar <= '1';	  --ss_bar is still 1 since data is not ready to be transmitted at idle state  
+			ss_bar <= '1';	  --ss_bar is still 1 since data is not ready to be transmitted at idle state  
 		
 		when delay2 =>
-		ss_bar <= '0';
-		spi_rxen <= '1';
+			ss_bar <= '0';
+			spi_rxen <= '1';
 		
 		
 		when delay =>
-		ss_bar <= '0';
-		sck <= cpol; 
-		spi_rxen <= '0';
+			ss_bar <= '0';
+			sck <= cpol; 
+			spi_rxen <= '0';
 					
 		when ph1 =>  
 		
 		if dord = '1' then	
 				txd <= data_in(LSBindex); --dord is 0 so shift left starting from LSB	  LSBindex = 0
-			else if dord = '0' then
+		else if dord = '0' then
 				txd <= data_in(index);	  --dord is 1 so shift right starting from MSB	  index = 7
-		  end if;	
-		end if;
+	  end if;	
+end if;
 		
 		
-		ss_bar <= '0';				--data is ready to be sampled which ss_bar is 0	  
+			ss_bar <= '0';				--data is ready to be sampled which ss_bar is 0	  
 
 if dord = '0' or dord = '1' then
 	if (cpha = '1' and cpol = '0') or (cpha = '1' and cpol = '1') then
 		   sck <= '1';				--sck is still 0 since data has not yet been shifted   
 		   spi_rxen <= '0';
-		else if (cpha = '0' and cpol = '0') or (cpha = '0' and cpol = '1') then
+	else if (cpha = '0' and cpol = '0') or (cpha = '0' and cpol = '1') then
 			sck <= '0';  	   
 			spi_rxen <= '0';
+		end if;	  
 	end if;	  
-end if;	  
 end if;
 		   
 						
 			  
-			when ph2 =>
+		when ph2 =>
 			ss_bar <= '0';  		   --ss_bar is still 0
 			sck <= not cpol;		   --sck is complemented of cpol since data has already been shifted 
 			 spi_rxen <= cpol; 
@@ -125,11 +126,11 @@ end if;
 			 data_in_temp <= '0' & data_in_temp(7 downto 1);   -- shift right for data_in and fill the empty spaces with 0s if dord is 1  	 
 		end if;
 	end if;
-	end if;		
+end if;		
 	
-	 if (cpha = '0' and cpol = '1') or (cpha = '0' and cpol = '0') then
-		   sck <= '1';
-		   spi_rxen <= '1';
+		 if (cpha = '0' and cpol = '1') or (cpha = '0' and cpol = '0') then
+		   	sck <= '1';
+		 	  spi_rxen <= '1';
 	   else	if (cpha = '1' and cpol = '0') or (cpha = '1' and cpol = '1') then
 		   sck <= '0';	  
 		   spi_rxen <= '1';
@@ -177,28 +178,17 @@ end if;
 	  next_state <= ph2;		    --go to ph2 as next state 
 	
  when ph2 => 	  	   
-    if (index = dataLen) or (LSBindex = dataLen2) then				--if current index is equal to finishing index 
+    	if (index = dataLen) or (LSBindex = dataLen2) then				--if current index is equal to finishing index 
 	 									                        --meaning the process is finished for shifting bits for data_in
 	     next_state <= delay;
 
-    else 
-	  next_state <= ph1;	   		--else go to ph1 to keep transferring each bit
+  	  else 
+	     next_state <= ph1;	   		--else go to ph1 to keep transferring each bit
 		                                            
-           end if;	   
+        end if;	   
  when delay => 	
      next_state <= idle; 
 
 end case; 
 end process;
 end spi_tx_shifter_fsm;
-
-
-
-
-
-
-
-
-
-
-
