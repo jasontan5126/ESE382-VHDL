@@ -12,10 +12,13 @@
 -- Date Performed : 27 Feb 2020
 -- Version/Rev : 1.0a
 -- Authored by : Jason Tan and Zach Doctor
+--IMPORTANT: Only applies for the "gray_bin_casewith_vectorinputsandoutputs.vhd", "gray_bin_if.vhd", and the "gray_bin_loop.vhd" files
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+library work;
+use work.all;
 
 entity gray_bin_selfcheck_tb is
 end gray_bin_selfcheck_tb;
