@@ -1,4 +1,4 @@
- -- Entity Name : gray_bin_1
+ -- Entity Name : gray_bin
  -- Entity Description: Entity has an input g3, g2, g1, and g0
  -- Outputs are b3, b2, b1, and b0
  -- Architecture Name : selected
@@ -16,7 +16,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity gray_bin_1 is
+entity gray_bin is
 	 port(
 		 g3 : in STD_LOGIC;
 		 g2 : in STD_LOGIC;
@@ -27,11 +27,11 @@ entity gray_bin_1 is
 		 b1 : out STD_LOGIC;
 		 b0 : out STD_LOGIC
 	     );
-end gray_bin_1;
+end gray_bin;
 
 --}} End of automatically maintained section
 
-architecture selected of gray_bin_1 is
+architecture gray_bin_selected_dc of gray_bin is
 	 signal temp : std_logic_vector(3 downto 0);
 begin
 	 (b3, b2, b1, b0) <= temp;
@@ -51,4 +51,4 @@ begin
 	"----" when others;
 	 
 
-end selected;
+end gray_bin_selected_dc;
