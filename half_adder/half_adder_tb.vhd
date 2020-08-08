@@ -8,9 +8,12 @@
  -- Date Performed : 6 and 13 Feb 2020
  -- Version/Rev : 1.0a
  -- Authored by : Jason Tan and Zach Doctor
+ 
 
 library	ieee;
 use ieee.std_logic_1164.all;
+library work;
+use work.all;
 
 entity testbench is
 end testbench;
