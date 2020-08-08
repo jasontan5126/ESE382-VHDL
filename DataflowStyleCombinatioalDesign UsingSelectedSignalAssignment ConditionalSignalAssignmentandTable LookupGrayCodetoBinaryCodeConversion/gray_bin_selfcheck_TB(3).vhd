@@ -3,10 +3,14 @@
  -- Architecture Name : tb_architecture
  -- Description : Applies each possible input combinations (gray code) and check if its
  -- corresponding outputs (binary codes) conversion is correct
+ -- IMPORTANT: only applies for the gray_bin_select.vhd, and gray_bin_selectwithdontcares.vhd files
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+library work;
+use work.all;
+
 
 entity gray_bin_selfcheck_tb is
 end gray_bin_selfcheck_tb;
