@@ -1,26 +1,13 @@
--------------------------------------------------------------------------------
---
--- Title       : half_subtractor
--- Design      : half_subtractor
--- Author      : Jason Tan
--- Company     : Stony Brook
---
--------------------------------------------------------------------------------
---
--- File        : c:\My_Designs\half_subtractor\half_subtractor\src\half_subtractor.vhd
--- Generated   : Thu Feb  6 08:34:11 2020
--- From        : interface description file
--- By          : Itf2Vhdl ver. 1.22
---
--------------------------------------------------------------------------------
---
--- Description : 
---
--------------------------------------------------------------------------------
-
---{{ Section below this comment is automatically maintained
---   and may be overwritten
---{entity {half_subtractor} architecture {half_subtractor}}
+  -- Entity Name : half_adder
+  -- Entity Description: Entity has 2 inputs: a,b and 
+  -- 2 outputs carry_out and sum
+  -- Architecture Name : dataflow
+  -- Description : Implements the functionality of the half adder
+  -- Laboratory : #1
+  -- Section : 03
+  -- Date Performed : 6 Feb 2020
+  -- Version/Rev : 1.0a
+  -- Authored by : Jason Tan and Zach Doctor
 
 library IEEE;
 use IEEE.std_logic_1164.all;
