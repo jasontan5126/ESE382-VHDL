@@ -12,10 +12,13 @@
 -- Date Performed : 27 Feb 2020
 -- Version/Rev : 1.0a
 -- Authored by : Jason Tan and Zach Doctor
+-- IMPORTANT: Only applies for the gray_bin_conditional.vhd, and gray_bin_tablelookup.vhd files
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+library work;
+use work.all;
 
 entity gray_bin_selfcheck_tb is
 end gray_bin_selfcheck_tb;
